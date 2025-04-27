@@ -117,6 +117,12 @@
 
       document.body.appendChild(script);
 
+      window.addEventListener("beforeunload", function (e) {
+        if (typeof unityInstance !== "undefined") {
+          unityInstance.SendMessage('EventSystem', 'ForceQuit');
+        }
+      });
+
     </script>
   </body>
 </html>
